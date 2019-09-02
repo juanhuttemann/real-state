@@ -1,11 +1,18 @@
 import React from 'react';
-import './App.css';
-import Header from './Header';
+import './sass/App.scss';
+import Header from './components/Header';
+import Filter from './components/Filter'
+import Listings from './components/Listings'
 
 function App() {
   return (
     <div className="App">
-      <Header/> 
+      <Header /> 
+      <section id="content-area">
+        <Filter />
+        <Listings />
+        
+      </section>  
     </div>
   );
 }
