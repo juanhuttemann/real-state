@@ -11,7 +11,6 @@ function App() {
       <section id="content-area">
         <Filter />
         <Listings />
-        
       </section>  
     </div>
   );

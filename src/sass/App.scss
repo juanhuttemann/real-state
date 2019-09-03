@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,500,700');
 @import 'variables';
 @import 'reset';
-@import 'listings';
 
-body {
+*, html, body {
     font-family: 'Roboto', sans-sefif;
+    box-sizing: border-box;
 }
+
+@import 'listings';
+@import 'content-area';
