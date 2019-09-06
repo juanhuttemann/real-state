@@ -78,8 +78,9 @@
             background: transparent;
             font-size: 2rem;
              border: none;
-             border-bottom: 2px solid $darkgrey;
+             border-bottom: 1px solid $darkgrey;
              margin-bottom: 20px;
+             font-weight: 100;
              color: $lightgrey;
         }
     }
@@ -87,7 +88,7 @@
     .sortby-area{
         margin-bottom: 20px;
         .results {
-            color: $lightgrey;
+            color: $darkgrey;
             font-size: 0.8rem;
             display: inline-block;
         }
@@ -114,11 +115,11 @@
 
         }
     }
-    .listings-results{
+    .listings-results {
         margin-bottom: 60px;
+
         .listing {
             background: #fff;
-            width: 33.33%;
             border-radius: 5px;
             -webkit-box-shadow: 0px 9px 48px -4px rgba(176, 176, 176, 1);
             -moz-box-shadow: 0px 9px 48px -4px rgba(176, 176, 176, 1);
@@ -140,8 +141,27 @@
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
             min-height: 200px;
+            transition: all 0.6s ease-in-out;
+
+            &:hover {
+                .details {
+                    opacity: 1;
+                }
+                .address {
+                    opacity: 0;
+                }
+            }
+
+            .address {
+                position: absolute;
+                bottom: 20px;
+                opacity: 1;
+                transition: all 0.4s ease-in-out;
+            }
 
             .details {
+                transition: all 0.4s ease-in-out;
+                opacity: 0;
                 padding: 30px;
                 position: absolute;
                 top: 0;
@@ -204,7 +224,7 @@
 
                     span {
                         font-weight: 300;
-                        font-size: .8rem;
+                        font-size: 0.8rem;
                         display: inline-block;
                         vertical-align: top;
                         position: relative;
@@ -219,21 +239,45 @@
 
             }
         }
+    
+        .bottom-info {
+            padding: 20px 15px;
+
+            .price {
+                font-size: 1.1rem;
+                display: block;
+                margin-bottom: 10px;
+                color: $darkgrey;
+            }
+
+            .location {
+                font-size: 1.2rem;
+                display: block;
+                color: $lightgrey;
+            }
+        }
     }
 }
 
 .view-btn {
-    background: $pink;
-    padding: 15px;
-    font-size: .9rem;
+    background: black;
+    padding: 8px;
+    font-size: 0.9rem;
     border-radius: 5px;
     text-align: center;
+    max-width: 150px;
+    transition: background 0.3s ease-in-out;
+    &:hover {
+        background: $pink;
+        cursor: pointer;
+    }
 }
 
 .col-md-3 {
     width: 25%;
     display: inline-block;
     vertical-align: top;
+    padding: 0 15px;
 }
 
 .col-md-9 {

@@ -22,9 +22,11 @@ class Listings extends Component {
           </div>
         </section>
         <section className="listings-results">
+        <div className="col-md-3"></div>
+
           <div className="listing">
             <div className="listing-img">
-              <span className="Address">Address</span>
+              <span className="address">Address</span>
               <div className="details">
                 <div className="col-md-3">
                   <div className="user-img"></div>
@@ -44,20 +46,19 @@ class Listings extends Component {
                       <span> 3 Bedrooms</span>
                     </div>
                   </div>
-
                   <div className="view-btn">
                     View Listing
                   </div>
-
                 </div>
               </div>
             </div>
 
             <div className="bottom-info">
-              <span>$1000 / month </span>
-              <span><i className="fa fa-map-marker" aria-hidden="true" /> Ridgewood NY</span>
+              <span className="price">$1000 / month </span>
+              <span className="location"><i className="fa fa-map-marker" aria-hidden="true" /> Ridgewood NY</span>
             </div>
           </div>
+        
         </section>
         <section className="pagination">
           <ul className="pagination-nums">
