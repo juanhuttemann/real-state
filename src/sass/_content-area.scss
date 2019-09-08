@@ -119,6 +119,7 @@
         margin-bottom: 60px;
 
         .listing {
+            margin: 12px 15px;            
             background: #fff;
             border-radius: 5px;
             -webkit-box-shadow: 0px 9px 48px -4px rgba(176, 176, 176, 1);
@@ -129,7 +130,6 @@
             color: white;
             padding: 15px;
             position: relative;
-            background: url("https://image.bluprin.com/blog/y5qabrry.jpeg") no-repeat center center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -153,16 +153,19 @@
             }
 
             .address {
+                text-transform: capitalize;
+                font-size: 1.3rem;
                 position: absolute;
                 bottom: 20px;
                 opacity: 1;
                 transition: all 0.4s ease-in-out;
+                text-shadow: 2px 2px 9px rgba(91, 91, 91, .8);
             }
 
             .details {
                 transition: all 0.4s ease-in-out;
                 opacity: 0;
-                padding: 30px;
+                padding: 20px;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -195,7 +198,6 @@
 
                 .user-details {
                     vertical-align: top;
-                    display: inline-block;
 
                     .user-name {
                         font-weight: 300;
@@ -204,11 +206,14 @@
                         color: rgba(255, 255, 255, 1);
                         margin-top: 3px;
                         margin-bottom: 5px;
+                        margin-left: 5px;
                     }
                     .post-date {
                         font-size: 0.9rem;
                         display: block;
-                        color: rgba(255, 255, 255, .8)
+                        color: rgba(255, 255, 255, .8);
+                        margin-left: 5px;
+
                     }
                 }
 
@@ -223,9 +228,9 @@
                     }
 
                     span {
+                        float: right;
                         font-weight: 300;
                         font-size: 0.8rem;
-                        display: inline-block;
                         vertical-align: top;
                         position: relative;
                         top: 3px;
@@ -273,14 +278,34 @@
     }
 }
 
-.col-md-3 {
-    width: 25%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 15px;
-}
+#pagination {
+    text-align: center;
+    .pages {
+        margin: 0 auto;
+        display: inline-block;
+        -webkit-box-shadow: 0px 9px 48px -4px rgba(176, 176, 176, 1);
+        -moz-box-shadow: 0px 9px 48px -4px rgba(176, 176, 176, 1);
+        box-shadow: 0px 9px 48px -4px rgba(176, 176, 176, 1);
 
-.col-md-9 {
-    width: 75%;
-    display: inline-block;
+        li.active{
+            padding: 20px 30px;
+            display: inline-block;
+            background: $pink;
+            font-weight: 700;
+            color: white;
+        }
+
+        li {
+            padding: 20px 30px;
+            display: inline-block;
+            
+
+            &:hover{
+                background: $pink;
+                font-weight: 700;
+                color: white;
+
+            }
+        }
+    }
 }
