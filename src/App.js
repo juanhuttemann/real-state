@@ -13,8 +13,11 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      values: [50],
       listings: listings.data,
+      city: '',
+      homeType: '',
+      rooms: 0,
+      values: [50],
       min_price: 0,
       max_price: 10000000,
       min_floor_space: 25,
@@ -53,8 +56,21 @@ class App extends Component {
 
   filteredData(){
     var newData = this.state.listings.filter((item) => {
-      return item.price >= this.state.min_price && item.price <= this.state.max_price && item.floorSpace >= this.state.min_floor_space && item.floorSpace <= this.state.max_floor_space
+      return item.price >= this.state.min_price && item.price <= this.state.max_price && item.floorSpace >= this.state.min_floor_space && item.floorSpace <= this.state.max_floor_space && item.rooms >= this.state.rooms
     })
+
+    if (this.state.city !== "") {
+      newData = newData.filter((item)=>{
+        return item.city === this.state.city
+      })
+    }
+
+    if (this.state.homeType !== "") {
+      newData = newData.filter((item)=>{
+        return item.homeType === this.state.homeType
+      })
+    }
+
     this.setState({
       filteredData: newData
     })
@@ -64,10 +80,10 @@ class App extends Component {
       <div className="App">
         <Header /> 
         <div className="row row--no-gutter">
-          <div className="col-xs-6 col-sm-5 col-md-3 col--no-gutter">
+          <div className="col-xs-5 col-sm-5 col-md-2 col--no-gutter">
               <Filter change={this.change} globalState={this.state} onSlide={this.onSlide} />
             </div>
-          <div className="col-xs-6 col-sm-7 col-md-9">
+          < div className = "col-xs-7 col-sm-7 col-md-10 col--no-gutter" >
               <Search />
               <Listings listings={this.state.filteredData} />
             </div>

@@ -12,34 +12,53 @@ class Filter extends Component {
                     <h4>Filter</h4>
                     <form onChange={this.props.change}> 
 
-                    <select name="neighborhood" className="filters neighborhood">
+                    <select name="city" className="filters city">
+                        <option value="">Cities</option>
                         <option value="Ridgewood">Ridgewood</option>
                         <option value="Miami">Miami</option>
+                        <option value="Orlando">Orlando</option>
                     </select>
-                    <select name="housetype" className="filters housetype">
+                    < select name = "homeType"
+                    className = "filters homeType" >
+                        <option value="">House Type</option>
                         <option value="Ranch">Ranch</option>
                         <option value="Apartment">Apartment</option>
                         <option value="Room">Room</option>
                         <option value="House">House</option>
                     </select>
-                    <select name="bedrooms" className="filters bedrooms">
-                        <option value="1">1 BR</option>
-                        <option value="2">2 BR</option>
-                        <option value="3">3 BR</option>
-                        <option value="4">4 BR</option>
+                    <select name="rooms" className="filters bedrooms">
+                        <option value="">Rooms</option>
+                        <option value="1">1+ BR</option>
+                        <option value="2">2+ BR</option>
+                        <option value="3">3+ BR</option>
+                        <option value="4">4+ BR</option>
                     </select>
                     <div className="filters price">
                         <span className="title">Price</span>
                             <Nouislider
-                                range={{ min: 0, max: 50000 }}
-                                start={[0, 50000]}
+                                range={{ min: 0, max: 100000 }}
+                                start = {
+                                    [0, 100000]
+                                }
                                 onSlide={this.props.onSlide}
-                                step={10}
+                                step={50}
                                 connect 
                                 className="filters price-range"
                             />
-                            <input type="text" name="min_price" className="min-price" value={this.props.globalState.min_price} />
-                            <input type="text" name="max_price" className="max-price" value={this.props.globalState.max_price}/>
+                            < input type = "text"
+                            name = "min_price"
+                            className = "min-price"
+                            defaultValue = {
+                                this.props.globalState.min_price
+                            }
+                            />
+                            < input type = "text"
+                            name = "max_price"
+                            className = "max-price"
+                            defaultValue = {
+                                this.props.globalState.max_price
+                            }
+                            />
                     </div>
                     <div className="filters floor-space">
                         <span className="title">Floor Space</span>

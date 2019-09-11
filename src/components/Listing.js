@@ -4,7 +4,7 @@ export default class Listings extends Component {
     render() {
         return (
             <div className="col-xs-12
-                col-sm-8
+                col-sm-10
                 col-md-6
                 col-lg-4">
                 <div className="listing">
