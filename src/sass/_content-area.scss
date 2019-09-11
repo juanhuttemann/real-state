@@ -34,6 +34,14 @@
     }
 
     .filters {
+
+        .price-range {
+            margin-right: 18px;
+            margin-left: 16px;
+                        margin-bottom: 1rem;
+
+        }
+ 
         .title {
             font-size: 0.9rem;
             display: block;
@@ -47,7 +55,7 @@
             padding: 0.4rem;
             width: 45%;
             display: inline-block;
-            margin-right: 2.5%;
+            margin-right: 2.4%;
             margin-bottom: 1rem;
         }
 

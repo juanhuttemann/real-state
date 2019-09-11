@@ -1,6 +1,8 @@
 import React, {
     Component
 } from 'react';
+import Nouislider from "nouislider-react";
+import "nouislider/distribute/nouislider.css";
 
 class Filter extends Component {
     render() {
@@ -9,6 +11,7 @@ class Filter extends Component {
                 <div className="inside">
                     <h4>Filter</h4>
                     <form onChange={this.props.change}> 
+
                     <select name="neighborhood" className="filters neighborhood">
                         <option value="Ridgewood">Ridgewood</option>
                         <option value="Miami">Miami</option>
@@ -27,13 +30,21 @@ class Filter extends Component {
                     </select>
                     <div className="filters price">
                         <span className="title">Price</span>
-                        <input type="text" name="min_price" className="min-price"/>
-                        <input type="text" name="min_price" className="max-price"/>
+                            <Nouislider
+                                range={{ min: 0, max: 50000 }}
+                                start={[0, 50000]}
+                                onSlide={this.props.onSlide}
+                                step={10}
+                                connect 
+                                className="filters price-range"
+                            />
+                            <input type="text" name="min_price" className="min-price" value={this.props.globalState.min_price} />
+                            <input type="text" name="max_price" className="max-price" value={this.props.globalState.max_price}/>
                     </div>
                     <div className="filters floor-space">
                         <span className="title">Floor Space</span>
-                        <input type="text" name="min_floor_space" className="min-floor-space" />
-                        <input type="text" name="min_floor_space" className="max-floor-space" />
+                            <input type="text" name="min_floor_space" className="min-floor-space" defaultValue={this.props.globalState.min_floor_space}/>
+                            <input type="text" name="max_floor_space" className="max-floor-space" defaultValue={this.props.globalState.max_floor_space}/>
                     </div>
                     <div className="filters extras">
                         <span className="title">Extras</span>

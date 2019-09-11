@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Listing from './Listing';
-import listings from '../data/listingsData';
 
 class Listings extends Component {
-  state = {
-    listings: listings.data
-  }
-
   render() {
-    const items = this.state.listings.map((item, key) =>
+    var {listings} = this.props
+
+    const items = listings.map((item, key) =>
       <Listing key={key} data={item} />
     );
+
+    
+    if (listings === undefined || listings.length === 0 ) {
+      return "Sorry there's no results"
+    }
 
     return (
       <section id="listings">
