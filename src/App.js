@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './sass/App.scss';
 import Header from './components/Header';
+import Search from './components/Search';
 import Filter from './components/Filter';
 import Listings from './components/Listings';
 import listings from './data/listingsData';
@@ -52,7 +53,7 @@ class App extends Component {
 
   filteredData(){
     var newData = this.state.listings.filter((item) => {
-      return item.price >= this.state.min_price && item.price <= this.state.max_price
+      return item.price >= this.state.min_price && item.price <= this.state.max_price && item.floorSpace >= this.state.min_floor_space && item.floorSpace <= this.state.max_floor_space
     })
     this.setState({
       filteredData: newData
@@ -62,11 +63,15 @@ class App extends Component {
     return (
       <div className="App">
         <Header /> 
-
-        <section id="content-area">
-          <Filter change={this.change} globalState={this.state} onSlide={this.onSlide} />
-          <Listings listings={this.state.filteredData} />
-        </section>  
+        <div className="row row--no-gutter">
+          <div className="col-xs-6 col-sm-5 col-md-3 col--no-gutter">
+              <Filter change={this.change} globalState={this.state} onSlide={this.onSlide} />
+            </div>
+          <div className="col-xs-6 col-sm-7 col-md-9">
+              <Search />
+              <Listings listings={this.state.filteredData} />
+            </div>
+          </div>
       </div>
     )
   }

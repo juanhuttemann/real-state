@@ -1,18 +1,8 @@
-#content-area{
-    overflow: auto;
-    width: 100%;
-    min-height: 100vh;
-}
-
 #filter {
     background: $grey;
-    width: 30%;
-    max-width: 300px;
-    float: left;
 
     .inside {
         padding: 20px;
-        max-width: 300px;
     }
 
     h4 {
@@ -34,11 +24,10 @@
     }
 
     .filters {
-
         .price-range {
             margin-right: 18px;
             margin-left: 16px;
-                        margin-bottom: 1rem;
+            margin-bottom: 1rem;
 
         }
  
@@ -53,9 +42,9 @@
             border-radius: 5px;
             font-size: 1rem;
             padding: 0.4rem;
-            width: 45%;
+            width: 47%;
             display: inline-block;
-            margin-right: 2.4%;
+            margin-right: 2.0%;
             margin-bottom: 1rem;
         }
 
@@ -73,29 +62,24 @@
     }
 }
 
-#listings {
-    width: 70%;
-    float: left;
-    padding: 15px;
-    background: $offwhite;
-
-
     .search-area{
         input[type="text"] {
-            width: 70%;
+            width: 645px;
+            max-width: 100%;
             background: transparent;
             font-size: 2rem;
-             border: none;
-             border-bottom: 1px solid $darkgrey;
-             margin-bottom: 20px;
-             font-weight: 100;
-             color: $lightgrey;
+            border: none;
+            border-bottom: 1px solid $darkgrey;
+            margin-bottom: 20px;
+            margin-left: 15px;
+            font-weight: 100;
+            color: $lightgrey;
         }
     }
-
-    .sortby-area{
+        .sortby-area{
         margin-bottom: 20px;
         .results {
+            margin-left: 15px;
             color: $darkgrey;
             font-size: 0.8rem;
             display: inline-block;
@@ -123,6 +107,10 @@
 
         }
     }
+
+#listings {
+    background: $offwhite;
+
     .listings-results {
         margin-bottom: 60px;
 
