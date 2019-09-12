@@ -45,7 +45,7 @@ var data = [
     },
     {
         address: "Streets of light.",
-        city: "Orlando",
+        city: "Miami",
         state: "FL",
         rooms: 5,
         price: 7000,
@@ -102,9 +102,9 @@ var data = [
 
     },
     {
-        address: "123 Fake Street.",
-        city: "Orlando",
-        state: "FL",
+        address: "730 gates ave.",
+        city: "Springfield",
+        state: "IN",
         rooms: 3,
         price: 800,
         floorSpace: 100,

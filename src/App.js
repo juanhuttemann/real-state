@@ -19,7 +19,7 @@ class App extends Component {
       rooms: 0,
       values: [50],
       min_price: 0,
-      max_price: 10000000,
+      max_price: 1000000,
       min_floor_space: 25,
       max_floor_space: 50000,
       elevator: false,
@@ -31,6 +31,7 @@ class App extends Component {
     this.change = this.change.bind(this)
     this.filteredData = this.filteredData.bind(this)
     this.onSlide = this.onSlide.bind(this)
+    this.populateForms = this.populateForms.bind(this)
 
 
   }
@@ -75,19 +76,54 @@ class App extends Component {
       filteredData: newData
     })
   }
+
+  populateForms(){
+    //city
+    var cities = this.state.listings.map((item)=>{
+      return item.city
+    })
+
+    cities = new Set(cities)
+    cities = [...cities]
+
+    //homeType
+    var homeTypes = this.state.listings.map((item) => {
+      return item.city
+    })
+
+    homeTypes = new Set(homeTypes)
+    homeTypes = [...homeTypes]
+
+    //rooms
+    var rooms = this.state.listings.map((item) => {
+      return item.city
+    })
+
+    rooms = new Set(rooms)
+    rooms = [...rooms]
+
+    this.setState({
+      populateFormsData: {
+        homeTypes,
+        rooms,
+        cities
+      }
+    });
+  }
+
   render () {
     return (
       <div className="App">
         <Header /> 
         <div className="row row--no-gutter">
-          <div className="col-xs-5 col-sm-5 col-md-2 col--no-gutter">
-              <Filter change={this.change} globalState={this.state} onSlide={this.onSlide} />
-            </div>
-          < div className = "col-xs-7 col-sm-7 col-md-10 col--no-gutter" >
+          <div className = "col-xs-5 col-sm-5 col-md-2 col-lg-2 col--no-gutter">
+              <Filter change={this.change} globalState={this.state} onSlide={this.onSlide} populateAction={this.populateForms}/>
+          </div>
+          <div className="col-xs-7 col-sm-7 col-md-10 col-lg-10 col--no-gutter">
               <Search />
               <Listings listings={this.state.filteredData} />
-            </div>
           </div>
+        </div>
       </div>
     )
   }

@@ -1,33 +1,55 @@
-import React, {
-    Component
-} from 'react';
+import React, {Component} from 'react';
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 
 class Filter extends Component {
+    
+    componentWillMount(){
+        this.props.populateAction()
+    }
+
+    cities(){
+        var { populateFormsData } = this.props.globalState
+        return populateFormsData.map((item)=>{
+            return (
+                <option value={item}>{item}</option>
+            )
+        })
+    }
+
+    homeTypes(){
+
+    }
+
+    bedrooms(){
+
+    }
+
     render() {
         return (
             <section id="filter">
                 <div className="inside">
                     <h4>Filter</h4>
                     <form onChange={this.props.change}> 
-
+                    <label htmlFor="city">Cities</label>   
                     <select name="city" className="filters city">
-                        <option value="">Cities</option>
-                        <option value="Ridgewood">Ridgewood</option>
-                        <option value="Miami">Miami</option>
-                        <option value="Orlando">Orlando</option>
+                        <option value="">All</option>
+                        {this.cities}
                     </select>
-                    < select name = "homeType"
-                    className = "filters homeType" >
-                        <option value="">House Type</option>
+                    
+                    <label htmlFor="homeType">Home Type</label>   
+                    <select name="homeType"
+                    className="filters homeType">
+                        <option value="">All</option>
                         <option value="Ranch">Ranch</option>
                         <option value="Apartment">Apartment</option>
                         <option value="Room">Room</option>
                         <option value="House">House</option>
                     </select>
+
+                    <label htmlFor="rooms">Rooms</label>   
                     <select name="rooms" className="filters bedrooms">
-                        <option value="">Rooms</option>
+                        <option value="">0+ BR</option>
                         <option value="1">1+ BR</option>
                         <option value="2">2+ BR</option>
                         <option value="3">3+ BR</option>
@@ -36,26 +58,26 @@ class Filter extends Component {
                     <div className="filters price">
                         <span className="title">Price</span>
                             <Nouislider
-                                range={{ min: 0, max: 100000 }}
+                                range={{ min: 0, max: 50000 }}
                                 start = {
-                                    [0, 100000]
+                                    [0, 50000]
                                 }
                                 onSlide={this.props.onSlide}
-                                step={50}
+                                step={100}
                                 connect 
                                 className="filters price-range"
                             />
                             < input type = "text"
                             name = "min_price"
                             className = "min-price"
-                            defaultValue = {
+                            value = {
                                 this.props.globalState.min_price
                             }
                             />
-                            < input type = "text"
+                            <input type = "text"
                             name = "max_price"
                             className = "max-price"
-                            defaultValue = {
+                            value = {
                                 this.props.globalState.max_price
                             }
                             />
