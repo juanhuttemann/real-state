@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { AnimateKeyframes } from 'react-simple-animate';
+
 
 export default class Listings extends Component {
     render() {
@@ -7,6 +9,11 @@ export default class Listings extends Component {
                 col-sm-10
                 col-md-6
                 col-lg-4">
+            <AnimateKeyframes
+                play
+                duration={0.5}
+                keyframes={["opacity: 0", "opacity: 1"]}
+            >
                 <div className="listing">
                     <div className="listing-img" style={{
                         background: `url("${this.props.data.image}") no-repeat center center` }}>
@@ -32,7 +39,7 @@ export default class Listings extends Component {
                                         </div>
                                         <div className="bedrooms">
                                             <i className="fa fa-bed" aria-hidden="true" />
-                                            <span>{this.props.data.rooms}  Bedrooms</span>
+                                            <span> {this.props.data.rooms}  Bedrooms</span>
                                         </div>
                                     </div>
                                 </div>
@@ -55,8 +62,8 @@ export default class Listings extends Component {
                         </div>
                     </div>
                 </div>
+            </AnimateKeyframes>
             </div>
-
         )
     }
 }

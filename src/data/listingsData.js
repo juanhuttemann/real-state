@@ -68,7 +68,7 @@ var data = [
             'elevator',
             'gym'
         ],
-        homeType: 'apartment',
+        homeType: 'Apartment',
         image: 'https://i.ytimg.com/vi/l3yHLikvjPU/maxresdefault.jpg'
 
     },

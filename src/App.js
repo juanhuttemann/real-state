@@ -5,6 +5,7 @@ import Search from './components/Search';
 import Filter from './components/Filter';
 import Listings from './components/Listings';
 import listings from './data/listingsData';
+import { thisExpression } from '@babel/types';
 
 
 
@@ -26,15 +27,29 @@ class App extends Component {
       swimming_pool: false,
       finished_basement: false,
       gym: false,
-      filteredData: listings.data
+      filteredData: listings.data,
+      populateFormsData: '',
+      sortby: 'price-dsc',
+      view: 'box',
+      search: '',
     }
+
     this.change = this.change.bind(this)
     this.filteredData = this.filteredData.bind(this)
     this.onSlide = this.onSlide.bind(this)
     this.populateForms = this.populateForms.bind(this)
-
-
+    this.changeView = this.changeView.bind(this)
   }
+
+  componentWillMount(){
+    var listings = this.state.listings.sort((a,b) => {
+      return a.price - b.price
+    })
+    this.setState({
+      listings
+    })
+  }
+
   onSlide = (render, handle, value, un, percent) => {
     this.setState({
       min_price: Math.round(value[0]),
@@ -72,6 +87,29 @@ class App extends Component {
       })
     }
 
+    if (this.state.sortby === 'price-dsc') {
+      newData = newData.sort((a,b) => {
+        return a.price - b.price
+      })
+    }
+
+    if (this.state.sortby === 'price-asc') {
+      newData = newData.sort((a, b) => {
+        return b.price - a.price
+      })
+    }
+
+    if(this.state.search !== ''){
+      newData = newData.filter((item) =>{
+        var city = item.city.toLowerCase()
+        var searchText = this.state.search.toLowerCase()
+        var result = city.match(searchText)
+        if (result !== null) {
+          return true
+        }
+      })
+    }
+
     this.setState({
       filteredData: newData
     })
@@ -85,22 +123,25 @@ class App extends Component {
 
     cities = new Set(cities)
     cities = [...cities]
+    cities = cities.sort()
 
     //homeType
     var homeTypes = this.state.listings.map((item) => {
-      return item.city
+      return item.homeType
     })
 
     homeTypes = new Set(homeTypes)
     homeTypes = [...homeTypes]
+    homeTypes = homeTypes.sort()
 
     //rooms
     var rooms = this.state.listings.map((item) => {
-      return item.city
+      return item.rooms
     })
 
     rooms = new Set(rooms)
     rooms = [...rooms]
+    rooms = rooms.sort()
 
     this.setState({
       populateFormsData: {
@@ -108,7 +149,15 @@ class App extends Component {
         rooms,
         cities
       }
+    }, () => {
+        console.log(this.state.populateFormsData)
     });
+  }
+
+  changeView(viewName){
+    this.setState({
+      view: viewName
+    })
   }
 
   render () {
@@ -116,12 +165,23 @@ class App extends Component {
       <div className="App">
         <Header /> 
         <div className="row row--no-gutter">
-          <div className = "col-xs-5 col-sm-5 col-md-2 col-lg-2 col--no-gutter">
-              <Filter change={this.change} globalState={this.state} onSlide={this.onSlide} populateAction={this.populateForms}/>
+          <div className="col-xs-5 col-sm-5 col-md-3 col-lg-2 col--no-gutter">
+              <Filter 
+                change={this.change} 
+                globalState={this.state} 
+                onSlide={this.onSlide} 
+                populateAction={this.populateForms}/>
           </div>
-          <div className="col-xs-7 col-sm-7 col-md-10 col-lg-10 col--no-gutter">
-              <Search />
-              <Listings listings={this.state.filteredData} />
+          <div className="col-xs-7 col-sm-7 col-md-9 col-lg-9 col--no-gutter">
+            <Search 
+              change={this.change} 
+              changeView={this.changeView} 
+              globalState={this.state}
+            />
+            <Listings 
+              listings={this.state.filteredData} 
+              globalState={this.state} 
+            />
           </div>
         </div>
       </div>

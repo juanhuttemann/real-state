@@ -3,26 +3,50 @@ import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 
 class Filter extends Component {
-    
+    constructor(){
+        super()
+        this.cities = this.cities.bind(this)
+        this.homeTypes = this.homeTypes.bind(this)
+        this.rooms = this.rooms.bind(this)
+    }
     componentWillMount(){
         this.props.populateAction()
     }
 
     cities(){
-        var { populateFormsData } = this.props.globalState
-        return populateFormsData.map((item)=>{
-            return (
-                <option value={item}>{item}</option>
-            )
-        })
-    }
+        if (this.props.globalState.populateFormsData.cities !== undefined){
 
+            var { cities } = this.props.globalState.populateFormsData
+            return cities.map((item) =>{
+                return(
+                    <option key={item} value={item}>{item}</option>
+                )
+            })
+        }
+    }
+            
     homeTypes(){
+        if (this.props.globalState.populateFormsData.homeTypes !== undefined) {
 
+            var { homeTypes } = this.props.globalState.populateFormsData
+            return homeTypes.map((item) => {
+                return (
+                    <option key={item} value={item}>{item}</option>
+                )
+            })
+        }
     }
 
-    bedrooms(){
+    rooms(){
+        if (this.props.globalState.populateFormsData.rooms !== undefined) {
 
+            var { rooms } = this.props.globalState.populateFormsData
+            return rooms.map((item) => {
+                return (
+                    <option key={item} value={item}>{item}+ BR</option>
+                )
+            })
+        }
     }
 
     render() {
@@ -34,26 +58,20 @@ class Filter extends Component {
                     <label htmlFor="city">Cities</label>   
                     <select name="city" className="filters city">
                         <option value="">All</option>
-                        {this.cities}
+                        {this.cities()}
                     </select>
                     
                     <label htmlFor="homeType">Home Type</label>   
                     <select name="homeType"
                     className="filters homeType">
                         <option value="">All</option>
-                        <option value="Ranch">Ranch</option>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Room">Room</option>
-                        <option value="House">House</option>
+                            {this.homeTypes()}
                     </select>
 
                     <label htmlFor="rooms">Rooms</label>   
                     <select name="rooms" className="filters bedrooms">
                         <option value="">0+ BR</option>
-                        <option value="1">1+ BR</option>
-                        <option value="2">2+ BR</option>
-                        <option value="3">3+ BR</option>
-                        <option value="4">4+ BR</option>
+                            {this.rooms()}
                     </select>
                     <div className="filters price">
                         <span className="title">Price</span>
@@ -67,16 +85,16 @@ class Filter extends Component {
                                 connect 
                                 className="filters price-range"
                             />
-                            < input type = "text"
+                            <input type="text"
                             name = "min_price"
                             className = "min-price"
                             value = {
                                 this.props.globalState.min_price
                             }
                             />
-                            <input type = "text"
+                            <input type="text"
                             name = "max_price"
-                            className = "max-price"
+                            className ="max-price"
                             value = {
                                 this.props.globalState.max_price
                             }

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import Listing from './Listing';
+import ListingBox from './ListingBox';
+import ListingLong from './ListingLong';
+
 
 class Listings extends Component {
   render() {
     var {listings} = this.props
 
-    const items = listings.map((item, key) =>
-      <Listing key={key} data={item} />
+    const items = listings.map((item, key) => {
+      if(this.props.globalState.view === 'box'){
+        return (<ListingBox key={key} data={item} />)
+      } else {
+        return (<ListingLong key={key} data={item} />)
+      }
+    }
     );
 
     
@@ -17,7 +24,7 @@ class Listings extends Component {
     return (
       <section id="listings">
         <section className="listings-results">
-          <div className="row">
+          <div className="row row--no-gutter">
             {items}
           </div>
         </section>

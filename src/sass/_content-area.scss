@@ -1,7 +1,11 @@
 #filter {
     background: $grey;
+    height: 100%;
+    max-width: 240px;
 
     .inside {
+        position: fixed;
+        max-width: 220px;
         padding: 20px;
     }
 
@@ -20,7 +24,7 @@
         color: #1b1b1b;
         display: block;
         margin-bottom: 25px;
-        width: 100%;
+        width: 95%;
     }
 
     .filters {
@@ -97,10 +101,14 @@
                 vertical-align: top;
             }
             .view {
+                margin-top: 3px;
                 display: inline-block;
                 .fa {
                     margin-right: 15px;
                     font-size: 1.5rem;
+                        &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
 
@@ -220,11 +228,9 @@
                     .fa {
                         display: inline-block;
                         font-size: 20px;
-                        margin-right: 15px;
                     }
 
                     span {
-                        float: right;
                         font-weight: 300;
                         font-size: 0.8rem;
                         vertical-align: top;
